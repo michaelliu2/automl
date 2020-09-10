@@ -751,7 +751,7 @@ class Model(tf.keras.Model):
       # Calls final layers and returns logits.
       outputs = self._head(outputs, training, pooled_features_only)
       self.endpoints.update(self._head.endpoints)
-
+    print({k: v.shape for k, v in self.endpoints.items()})
     return [outputs] + list(
         filter(lambda endpoint: endpoint is not None, [
             self.endpoints.get('reduction_1'),
